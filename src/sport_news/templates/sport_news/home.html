@@ -1,7 +1,8 @@
 {% extends "base.html" %}
+{% block title %} Home {% endblock %}
 {% block content %}
     {% for obj in object_list %}
-    <div class="card my-2">
+    <div class="card my-3">
         <h5 class="card-header"><a href="{{ obj.url }}">{{ obj.title }}</a></h5>
         <div class="card-body">
             <p class="card-text">{{ obj.description }}</p>
@@ -9,12 +10,15 @@
             <small>{{ obj.timestamp|date:"d-m-y" }}</small></p>
         </div>
     </div>
+    {% empty %}<h3 class="my-4 text-center">
+        К сожалению, по вашему запросу ничего не найдено.
+    </h3>
     {% endfor %}
+<div class="row">
+    <div class="col-md-6 mx-auto">
     <form method="GET" action="">
-        <label>Город:</label><br>
-        <input type="text" name="city"><br>
-        <label>Вид спорта:</label><br>
-        <input type="text" name="language"><br>
-        <input type="submit" value="Submit">
-    </form>
+        <div class="form-group">
+        {{form.as_p}}</div>
+        <input type="submit" class="btn btn-primary">
+    </form></div></div>
 {% endblock %}
