@@ -7,5 +7,5 @@ class FindForm(forms.Form):
         widget=forms.Select(attrs={'class': 'form-control'}))
     sport_type = forms.ModelChoiceField(
         queryset=Sport_type.objects.all(), to_field_name='slug',
-        required=False, label='Специальность',
+        required=False, label='Вид спорта',
         widget=forms.Select(attrs={'class': 'form-control'}))
