@@ -13,7 +13,8 @@ class MyUserManager(BaseUserManager):
         return user
     def create_superuser(self, email, password=None):
         user = self.create_user(
-            email, password=password,
+            email,
+            password=password,
         )
         user.is_admin = True
         user.save(using=self._db)
@@ -30,7 +31,7 @@ class MyUser(AbstractBaseUser):
     sport_type = models.ForeignKey('sport_news.Sport_type', null=True,
                              on_delete=models.SET_NULL, blank=True)
     send_mail = models.BooleanField(default=True)
-    objects = UserManager()
+    objects = MyUserManager()
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
     def __str__(self):
