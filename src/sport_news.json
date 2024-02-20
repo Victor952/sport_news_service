@@ -1,0 +1,193 @@
+[
+{
+  "model": "sport_news.city",
+  "pk": 3,
+  "fields": {
+    "name": "Buenos-Aires",
+    "slug": " b"
+  }
+},
+{
+  "model": "sport_news.city",
+  "pk": 4,
+  "fields": {
+    "name": "Moscow",
+    "slug": "m"
+  }
+},
+{
+  "model": "sport_news.city",
+  "pk": 5,
+  "fields": {
+    "name": "Все города",
+    "slug": "all"
+  }
+},
+{
+  "model": "sport_news.city",
+  "pk": 6,
+  "fields": {
+    "name": "Paris",
+    "slug": "Paris"
+  }
+},
+{
+  "model": "sport_news.city",
+  "pk": 7,
+  "fields": {
+    "name": "Rostov",
+    "slug": "Rostov"
+  }
+},
+{
+  "model": "sport_news.city",
+  "pk": 8,
+  "fields": {
+    "name": "Saint-Petersburg",
+    "slug": "Saint-Petersburg"
+  }
+},
+{
+  "model": "sport_news.city",
+  "pk": 9,
+  "fields": {
+    "name": "Brussel",
+    "slug": "Brussel"
+  }
+},
+{
+  "model": "sport_news.city",
+  "pk": 10,
+  "fields": {
+    "name": "Madrid",
+    "slug": "Madrid"
+  }
+},
+{
+  "model": "sport_news.city",
+  "pk": 11,
+  "fields": {
+    "name": "Zheleznogorsk",
+    "slug": "Zheleznogorsk"
+  }
+},
+{
+  "model": "sport_news.city",
+  "pk": 12,
+  "fields": {
+    "name": "Berlin",
+    "slug": "Berlin"
+  }
+},
+{
+  "model": "sport_news.city",
+  "pk": 13,
+  "fields": {
+    "name": "Minsk",
+    "slug": "Minsk"
+  }
+},
+{
+  "model": "sport_news.city",
+  "pk": 14,
+  "fields": {
+    "name": "London",
+    "slug": "London"
+  }
+},
+{
+  "model": "sport_news.city",
+  "pk": 15,
+  "fields": {
+    "name": "Helsinki",
+    "slug": "Helsinki"
+  }
+},
+{
+  "model": "sport_news.city",
+  "pk": 16,
+  "fields": {
+    "name": "Riga",
+    "slug": "Riga"
+  }
+},
+{
+  "model": "sport_news.city",
+  "pk": 17,
+  "fields": {
+    "name": "Praga",
+    "slug": "Praga"
+  }
+},
+{
+  "model": "sport_news.city",
+  "pk": 18,
+  "fields": {
+    "name": "Tomsk",
+    "slug": "Tomsk"
+  }
+},
+{
+  "model": "sport_news.sport_type",
+  "pk": 1,
+  "fields": {
+    "name": "Скалолазание",
+    "slug": "Rock_climbing"
+  }
+},
+{
+  "model": "sport_news.sport_type",
+  "pk": 2,
+  "fields": {
+    "name": "Football",
+    "slug": "football"
+  }
+},
+{
+  "model": "sport_news.sport_type",
+  "pk": 3,
+  "fields": {
+    "name": "Все виды спорта",
+    "slug": "all"
+  }
+},
+{
+  "model": "sport_news.sport_type",
+  "pk": 4,
+  "fields": {
+    "name": "Swimming",
+    "slug": "swimming"
+  }
+},
+{
+  "model": "sport_news.sport_type",
+  "pk": 5,
+  "fields": {
+    "name": "Ski jumping",
+    "slug": "Ski jumping"
+  }
+},
+{
+  "model": "sport_news.sport_type",
+  "pk": 6,
+  "fields": {
+    "name": "Volleyball",
+    "slug": "Volleyball"
+  }
+},
+{
+  "model": "sport_news.sport_type",
+  "pk": 7,
+  "fields": {
+    "name": "Biathlon",
+    "slug": "Biathlon"
+  }
+},
+{
+  "model": "sport_news.sport_type",
+  "pk": 8,
+  "fields": {
+    "name": "High diving",
+    "slug": "High diving"
+  }
+}]
