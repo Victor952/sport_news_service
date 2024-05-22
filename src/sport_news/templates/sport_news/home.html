@@ -2,26 +2,26 @@
 {% block title %} Home {% endblock %}
 {% load static %} <!-- Подключение статических файлов -->
 {% block content %}
-    {% for obj in object_list %}
-    <div class="card my-3">
-        <h5 class="card-header"><a href="{{ obj.url }}">{{ obj.title }}</a></h5>
-        <div class="card-body">
-            <p class="card-text">{{ obj.description }}</p>
-            <p>{{ obj.city.name }} | {{ obj.sport_type.name }} |
-            <small>{{ obj.timestamp|date:"d-m-y" }}</small></p>
-        </div>
-    </div>
-    {% empty %}<h3 class="my-4 text-center"></h3>
-    {% endfor %}
+<div class="row">
+  <div class="col"><h2 class="text-center my-3">Сервис по сбору и рассылке спортивных новостей</h2></div>
+</div>
 <div class="everything">
-    <div class="sport_type col-12 col-sm-12 col-lg-16 col-md-12 col-xl-12">
+    <div class="stype col-12 col-sm-12 col-lg-16 col-md-12 col-xl-12">
         <div class="row">
-            <div class="col-md-12 mx-auto">
-                <form method="GET" action="">
+            <div class="col-md-12 mx-auto"> <!--было 12-->
+                <p class="">
+                    Каждый день мы анализируем сайты с новостями, согласно настройкам наших подпсчиков.
+                    Все подходящие спортивные новости, опубликованные на этих сайтах за последние сутки,
+                    записываются в базу данных и рассылаются подписчикам, согласно их предпочтениям.
+                    Вы можете просматривать актуальные новости, просто выбрав необходимый город или вид спорта.
+                    Или же, пройдя несложную <a href="{% url 'accounts:register' %}"> регистрацию</a>,
+                    получать каждый день письмо со списком новых новостей за последние сутки, согласно Вашим потребностям.
+                </p>
+                <form method="GET" action="{% url 'list_st' %}">
                     <div class="form-group">
-                        <div class="btn-group" role="group" aria-label="Sport Type">
-                            {% for choice in form_st.sport_type.field.choices %}
-                            <button type="submit" class="btn btn-success" name="sport_type"
+                        <div class="btn-group" role="group" aria-label="Stype">
+                            {% for choice in form_st.stype.field.choices %}
+                            <button type="submit" class="btn btn-success" name="stype"
                                     style="text-align: center; color: #f2f7f4; width: 200px; height: 45px;
                                            background-color: #2a9649; margin-top: 6px; border-radius: 25px"
                                     value="{{ choice.0 }}">{{ choice.1 }}</button>
@@ -35,7 +35,7 @@
     <div class="city fixed-right col-3 col-sm-3 col-lg-4 col-md-3 col-xl-3">
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <form method="GET" action="">
+                <form method="GET" action="{% url 'list_c' %}">
                     <div class="form-group">
                         {{form_city.as_p}}
                     </div>

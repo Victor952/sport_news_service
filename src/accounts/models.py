@@ -28,9 +28,9 @@ class MyUser(AbstractBaseUser):
     is_admin = models.BooleanField(default=False)
     city = models.ForeignKey('sport_news.City', null=True,
                              on_delete=models.SET_NULL, blank=True)
-    sport_type = models.ForeignKey('sport_news.Sport_type', null=True,
+    stype = models.ForeignKey('sport_news.Stype', null=True,
                              on_delete=models.SET_NULL, blank=True)
-    send_mail = models.BooleanField(default=True)
+    send_email = models.BooleanField(default=True)
     objects = MyUserManager()
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []

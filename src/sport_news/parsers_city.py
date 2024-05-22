@@ -1,15 +1,23 @@
 import requests
 import codecs
 from bs4 import BeautifulSoup as BS
-headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 5.1; rv:47.0) Gecko/20100101 Firefox/47.0',
-           'Accept': 'text/html,application/xhtml+xml;q=0.9,*/*;q=0.8'}
+from random import randint
+__all__ = ('sportuspro', "bezformata")
+headers = [
+    {'User-Agent': 'Mozilla/5.0 (Windows NT 5.1; rv:47.0) Gecko/20100101 Firefox/47.0',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'},
+    {'User-Agent': 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'},
+    {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; rv:53.0) Gecko/20100101 Firefox/53.0',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'}
+    ]
 '''h = codecs.open('krskbezformata.html', 'w', 'utf-8')
 h.write(str(resp.text))
 h.close()'''
 def sportuspro(url):
     news = []
     errors = []
-    resp = requests.get(url, headers=headers)
+    resp = requests.get(url, headers=headers[randint(0, 2)])
     domain = 'https://sportus.pro/'
     if resp.status_code == 200:
         soup = BS(resp.content, 'html.parser')
@@ -32,7 +40,8 @@ def sportuspro(url):
 def bezformata(url):
     news = []
     errors = []
-    resp = requests.get(url, headers=headers)
+    url = 'https://krasnoyarsk.bezformata.com/sport/'
+    resp = requests.get(url, headers=headers[randint(0, 2)])
     if resp.status_code == 200:
         soup = BS(resp.content, 'html.parser')
         main_section = soup.find('section', class_='listtopicbox')
@@ -53,6 +62,6 @@ def bezformata(url):
 if __name__ == '__main__':
     url = 'https://krasnoyarsk.bezformata.com/sport/'
     news, errors = bezformata(url)
-    h = codecs.open('bezformata.txt', 'w', 'utf-8')
+    h = codecs.open('../bezformata.txt', 'w', 'utf-8')
     h.write(str(news))
     h.close()

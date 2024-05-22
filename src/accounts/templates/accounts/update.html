@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %} Update {% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <h4 class="my-2">Подписывайтесь на рассылки новостей!</h4>
+        <form method="POST" action="">{% csrf_token %}
+            <div class="form-group">
+                {{form_st.as_p}}
+            </div>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </form><br>
+        <form method="POST" action="">{% csrf_token %}
+            <div class="form-group">
+                {{form_city.as_p}}
+            </div>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </form>
+        <form method="POST" action="{% url 'accounts:delete' %} ">{% csrf_token %}
+            <button type="submit" class="btn btn-danger my-3">Удалить аккаунт</button>
+        </form>
+    </div>
+</div>
+<div class="row my-5">
+    <div class="col-md-8 mx-auto">
+        <p class="my-2">Если вы не нашли подходящий город,
+            вы можете заполнить форму с вашими пожеланиями.
+            После того, как необходимые данные будут добавлены,
+            вы получите письмо на указанную вами электронную почту</p>
+        <div class="card card-body">
+            <form method="POST" action="{% url 'accounts:contact' %} ">{% csrf_token %}
+                <div class="form-group">
+                    {{ contact_form_city.as_p }}
+                </div>
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </form>
+            <form method="POST" action="{% url 'accounts:contact' %} ">{% csrf_token %}
+                <div class="form-group">
+                    {{ contact_form_st.as_p }}
+                </div>
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

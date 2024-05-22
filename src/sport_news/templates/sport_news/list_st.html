@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %} Job Finder {% endblock %}
+{% load static %} <!-- Подключение статических файлов -->
+{% block content %}
+{% if object_list_st %}
+<h3 class="my-4 text-center">Результаты согласно вашего запроса</h3>
+    {% for obj in object_list_st %}
+    <div class="card my-3">
+        <h5 class="card-header"><a href="{{ obj.url }}">{{ obj.title }}</a></h5>
+        <div class="card-body">
+            <p class="card-text">{{ obj.description }}</p>
+            <p>{{ obj.city.name }} | {{ obj.stype.name }} |
+            <small>{{ obj.timestamp|date:"d-m-y" }}</small></p>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="row">
+        <div class="col">
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+        {% if object_list_st.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?stype={{ stype }}page=1" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+      {% endif %}
+      {% for page in object_list_st.paginator_st.page_range %}
+      <li class="page-item {% if page == object_list_st.number %} active
+      {% endif %} ">
+          <a class="page-link" href="?stype={{ stype }}&page={{ page }}">{{ page }}</a></li>
+      {% endfor %}
+      {% if object_list_st.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?stype={{ stype }}&page={{ object_list_st.next_page_number }}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      {% endif %}
+  </ul>
+</nav>
+<!--            <div class="pagination">-->
+<!--                <span class="step-links">-->
+<!--                    {% if object_list_st.has_previous %}-->
+<!--                        <a href="?stype={{ stype }}page=1">&laquo; first</a>-->
+<!--                        <a href="?stype={{ stype }}&page={{ object_list_st.previous_page_number }}">previous</a>-->
+<!--                    {% endif %}-->
+
+<!--                    <span class="current">-->
+<!--                        Page {{ object_list_st.number }} of {{ object_list_st.paginator_st.num_pages }}.-->
+<!--                    </span>-->
+
+<!--                    {% if object_list_st.has_next %}-->
+<!--                        <a href="?stype={{ stype }}&page={{ object_list_st.next_page_number }}">next</a>-->
+<!--                        <a href="?stype={{ stype }}&page={{ object_list_st.paginator_st.num_pages }}">last &raquo;</a>-->
+<!--                    {% endif %}-->
+<!--                </span>-->
+<!--            </div>-->
+        </div>
+    </div>
+{% else %}
+<h3 class="my-4 text-center">
+  К сожалению, по вашему запросу ничего не найдено.
+</h3>
+{% endif %}
+{{ page_obj }} 
+<div class="everything">
+    <div class="stype col-12 col-sm-12 col-lg-16 col-md-12 col-xl-12">
+        <div class="row">
+            <div class="col-md-12 mx-auto">
+                <form method="GET" action="{% url 'list_st' %}">
+                    <div class="form-group">
+                        <div class="btn-group" role="group" aria-label="Stype">
+                            {% for choice in form_st.stype.field.choices %}
+                            <button type="submit" class="btn btn-success" name="stype"
+                                    style="text-align: center; color: #f2f7f4; width: 200px; height: 45px;
+                                           background-color: #2a9649; margin-top: 6px; border-radius: 25px"
+                                    value="{{ choice.0 }}">{{ choice.1 }}</button>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="city fixed-right col-3 col-sm-3 col-lg-4 col-md-3 col-xl-3">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <form method="GET" action="{% url 'list_c' %}">
+                    <div class="form-group">{{form_city.as_p}}</div>
+                    <button type="submit" class="btn btn-primary">Найти</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
